@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terrence Joshua C. De Guzman - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+            background-color: #EFEFEF;
+        }
+
+        #page-wrapper {
+            background-color: #FFF8F6;
+            color: #2A0808;
+            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            transition: max-width 0.4s ease, box-shadow 0.4s ease;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .view-desktop {
+            max-width: 1200px !important;
+            box-shadow: 0 0 25px rgba(0,0,0,0.2);
+        }
+
+        .view-tablet {
+            max-width: 768px !important;
+            box-shadow: 0 0 25px rgba(0,0,0,0.2);
+        }
+
+        .view-mobile {
+            max-width: 375px !important;
+            box-shadow: 0 0 25px rgba(0,0,0,0.2);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        header {
+            background-color: #FFFFFF;
+            padding: 15px 20px;
+            border-bottom: 2px solid #FAD2C9;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2A0808;
+        }
+
+        .logo-highlight {
+            color: #800000;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .view-selector-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #FFF8F6;
+            padding: 6px 12px;
+            border: 1px solid #800000;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #800000;
+        }
+
+        .view-selector-container select {
+            border: none;
+            background: transparent;
+            font-weight: bold;
+            color: #800000;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2A0808;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #800000;
+        }
+
+        .hero {
+            background-color: #6B0000;
+            color: #FFFFFF;
+            padding: 50px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: #FFD2C9;
+        }
+
+        .hero-tagline {
+            font-style: italic;
+            font-size: 1.05rem;
+            color: #FFECE8;
+            margin-bottom: 10px;
+        }
+
+        .hero-image {
+            flex-shrink: 0;
+        }
+
+        .hero-image img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid #FFD2C9;
+            object-fit: cover;
+        }
+
+        .section {
+            padding: 40px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.4rem, 2.8vw, 2rem);
+            color: #2A0808;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #800000;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .center-title {
+            text-align: center;
+        }
+
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #FAD2C9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .grid-3-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card-item {
+            background-color: #FFFFFF;
+            border: 1px solid #FAD2C9;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #800000;
+            color: #FFFFFF;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .image-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+            margin-bottom: 30px;
+        }
+
+        .movie-card {
+            background-color: #FFFFFF;
+            border: 1px solid #FAD2C9;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .movie-card h4 {
+            padding: 12px;
+            margin: 0;
+            color: #6B0000;
+        }
+
+        .photo-card {
+            background-color: #FFFFFF;
+            border: 1px solid #FAD2C9;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .photo-card p {
+            padding: 12px;
+            font-weight: bold;
+            color: #6B0000;
+            margin: 0;
+        }
+
+        .icon {
+            font-size: 28px;
+            color: #800000;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #FAD2C9;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .button {
+            background-color: #800000;
+            color: #FFFFFF;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #A82222;
+        }
+
+        footer {
+            background-color: #6B0000;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px 15px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 10px 15px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 35px 20px;
+            }
+
+            .hero-image img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .image-card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            }
+        }
+
+        .view-tablet .navbar-container,
+        .view-mobile .navbar-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .view-tablet .nav-links,
+        .view-mobile .nav-links {
+            justify-content: center;
+            gap: 10px 15px;
+        }
+
+        .view-tablet .hero,
+        .view-mobile .hero {
+            flex-direction: column-reverse;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .view-tablet .hero-image img,
+        .view-mobile .hero-image img {
+            width: 160px;
+            height: 160px;
+        }
+
+        .view-mobile .image-card-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .view-mobile .badge {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .view-mobile .button {
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="page-wrapper">
+
+        <header>
+            <div class="navbar-container">
+                <div class="logo">TJ <span class="logo-highlight">DeGuzman</span></div>
+                
+                <div class="nav-controls">
+                    <div class="view-selector-container">
+                        <i class="fa-solid fa-desktop"></i>
+                        <label for="viewSelect">View Mode:</label>
+                        <select id="viewSelect" onchange="changeViewMode(this.value)">
+                            <option value="auto">Auto (Responsive)</option>
+                            <option value="desktop">Desktop View</option>
+                            <option value="tablet">Tablet View</option>
+                            <option value="mobile">Mobile View</option>
+                        </select>
+                    </div>
+
+                    <ul class="nav-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#interests">Interests</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#achievements">Achievements</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Hi, I'm <span>Terrence Joshua C. De Guzman</span></h1>
+                <p class="hero-tagline">"Spiking strategies on the court, serving value in business."</p>
+                <p>22-Year-Old BS Marketing Student & Aspiring Entrepreneur</p>
+                <br>
+                <a href="#contact" class="button">Get In Touch</a>
+            </div>
+            <div class="hero-image">
+                <img src="95bdd0e4-ce98-4269-8838-b220257bc5d7.jfif" alt="Terrence Joshua C. De Guzman">
+            </div>
+        </div>
+
+        <div id="about" class="section">
+            <div class="center-title">
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="card">
+                <p>I am a 22-year-old student currently pursuing a <strong>BS in Marketing</strong> at <strong>Mapúa Malayan Colleges</strong>. I am driven by adaptability, emotional intelligence, and a strong sense of teamwork. My goal is to leverage my academic knowledge and personal experiences to build a successful business in the future.</p>
+            </div>
+        </div>
+
+        <div id="interests" class="section">
+            <div class="center-title">
+                <h2 class="section-title">Interests & Passions</h2>
+            </div>
+
+            <div class="card">
+                <h3>My Core Interests</h3>
+                <div class="badge-container">
+                    <span class="badge"><i class="fa-solid fa-film"></i> GREAT INTEREST in Films</span>
+                    <span class="badge"><i class="fa-solid fa-camera"></i> Nature Photography</span>
+                    <span class="badge"><i class="fa-solid fa-utensils"></i> Food</span>
+                    <span class="badge"><i class="fa-solid fa-volleyball"></i> Volleyball</span>
+                    <span class="badge"><i class="fa-solid fa-gamepad"></i> Online Gaming</span>
+                </div>
+            </div>
+
+            <h3><i class="fa-solid fa-clapperboard"></i> Favorite Films</h3>
+            <div class="image-card-grid">
+                <div class="movie-card">
+                    <img src="7450a221-231c-4708-9b96-ca866bc84797.jfif" alt="Mona Lisa Smile">
+                    <h4>Mona Lisa Smile</h4>
+                </div>
+                <div class="movie-card">
+                    <img src="c5eff488-1661-4f85-afb2-f66c0b21fec1.jfif" alt="Lars and the Real Girl">
+                    <h4>Lars and the Real Girl</h4>
+                </div>
+                <div class="movie-card">
+                    <img src="337d6812-4e87-4ba4-aed6-b4901383ae51.jfif" alt="Dinner in America">
+                    <h4>Dinner in America</h4>
+                </div>
+            </div>
+
+            <h3><i class="fa-solid fa-tree"></i> Nature & Landscape Photography</h3>
+            <div class="image-card-grid">
+                <div class="photo-card">
+                    <img src="f2d80287-5e6a-47a4-9605-700e44889658.jfif" alt="Lush Nature Stream">
+                    <p>Lush Greenery & Stream</p>
+                </div>
+                <div class="photo-card">
+                    <img src="ccbb7312-cc8b-4a7d-a9a0-62d8da3cf51a.jfif" alt="Coastal View">
+                    <p>Coastal Horizon & Waves</p>
+                </div>
+                <div class="photo-card">
+                    <img src="338e5161-0e8f-44a7-a048-a78c0b5c2649.jfif" alt="Outrigger Boat Ride">
+                    <p>Island Outrigger Boat Ride</p>
+                </div>
+            </div>
+
+            <h3><i class="fa-solid fa-burger"></i> Food & Culinary Exploration</h3>
+            <div class="image-card-grid">
+                <div class="photo-card">
+                    <img src="5e28e723-646c-44f2-acf4-98fbfe0fc8f0.jfif" alt="Pasta and Fish and Chips">
+                    <p>Seafood Pasta & Fish and Chips</p>
+                </div>
+                <div class="photo-card">
+                    <img src="9ffdb73a-36c2-4547-9ff9-0267d1845eb2.jfif" alt="Japanese Beef Rice Bowls">
+                    <p>Japanese Beef Donburi Bowls</p>
+                </div>
+                <div class="photo-card">
+                    <img src="5308d687-96b7-473f-ac99-3644cf8eabdc.jfif" alt="Street Food Kwek-Kwek">
+                    <p>Local Street Food (Kwek-Kwek)</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="skills" class="section">
+            <div class="center-title">
+                <h2 class="section-title">Skills & Strengths</h2>
+            </div>
+            <div class="grid-3-columns">
+                <div class="card-item">
+                    <div class="icon"><i class="fa-solid fa-users"></i></div>
+                    <h3>Teamwork</h3>
+                    <p>A natural team player who thrives in group environments and respects team dynamics.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon"><i class="fa-solid fa-rotate"></i></div>
+                    <h3>Adaptability</h3>
+                    <p>Quick to adjust to dynamic situations, new learning curves, and changing environments.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon"><i class="fa-solid fa-heart"></i></div>
+                    <h3>Emotional Intelligence</h3>
+                    <p>Strong interpersonal communication, empathy, and active listening capabilities.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="projects" class="section">
+            <div class="center-title">
+                <h2 class="section-title">Projects</h2>
+            </div>
+            <div class="grid-3-columns">
+                <div class="card-item">
+                    <h3>Campus Food Enterprise Plan</h3>
+                    <p><strong>Status:</strong> Concept / In Development</p>
+                    <p>A student-led food brand business proposal applying marketing theories, cost structures, and sales distribution strategies.</p>
+                </div>
+                <div class="card-item">
+                    <h3>Volleyball Youth Clinic Workshop</h3>
+                    <p><strong>Status:</strong> Active Volunteer Initiative</p>
+                    <p>A sports development initiative focused on coaching foundational techniques and athletic conditioning to young athletes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="achievements" class="section">
+            <div class="center-title">
+                <h2 class="section-title">Achievements</h2>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-trophy" style="color:#800000;"></i> Mythical 6 - ETYCB 2026 Volleyball</h3>
+                <p>Recognized as one of the top six standout athletes in the league tournament.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-medal" style="color:#800000;"></i> Foundation Volleyball - Bronze Medal</h3>
+                <p>Competed and placed third overall in the inter-school foundation league.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-certificate" style="color:#800000;"></i> Computer System Servicing NC II Passer</h3>
+                <p>National certification obtained during studies at Lyceum of Alabang.</p>
+            </div>
+        </div>
+
+        <div id="contact" class="section">
+            <div class="center-title">
+                <h2 class="section-title">Contact Me</h2>
+            </div>
+            <div class="card">
+                <p><strong>Name:</strong> Terrence Joshua C. De Guzman</p>
+                <p><strong>Email:</strong> r3ndeguzman@gmail.com</p>
+                <br>
+                <form>
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Your Email</label>
+                        <input type="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label>Your Message</label>
+                        <textarea rows="4" placeholder="Enter your message"></textarea>
+                    </div>
+                    <button type="button" class="button">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Terrence Joshua C. De Guzman. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function changeViewMode(mode) {
+            const wrapper = document.getElementById('page-wrapper');
+            
+            wrapper.classList.remove('view-desktop', 'view-tablet', 'view-mobile');
+            
+            if (mode !== 'auto') {
+                wrapper.classList.add('view-' + mode);
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symmetry Lab Parfums | Luxury Fragrances for Less</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-cream: #FAF7F2;
+            --bg-card: #FFFFFF;
+            --beige-light: #F3ECE1;
+            --beige-medium: #E5D9C5;
+            --taupe-accent: #C4B196;
+            --text-mocha: #3A322C;
+            --text-muted: #73675C;
+            --gold-accent: #B88E4C;
+            --shadow-soft: 0 8px 24px rgba(58, 50, 44, 0.08);
+            --shadow-hover: 0 12px 32px rgba(58, 50, 44, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-mocha);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-mocha);
+        }
+
+        .navbar-header {
+            background-color: var(--bg-cream);
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--beige-medium);
+        }
+
+        .logo a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-mocha);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--gold-accent);
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-mocha);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        .hero {
+            background-color: var(--beige-light);
+            padding: 5rem 8%;
+            text-align: center;
+            border-bottom: 1px solid var(--beige-medium);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--text-mocha);
+            color: var(--bg-cream);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gold-accent);
+            transform: translateY(-2px);
+        }
+
+        .products-section {
+            padding: 5rem 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--beige-medium);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-img-wrapper {
+            background-color: var(--bg-cream);
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--beige-light);
+        }
+
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img-wrapper img {
+            transform: scale(1.04);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .dupe-note {
+            font-size: 0.82rem;
+            color: var(--gold-accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-mocha);
+            margin-bottom: 1rem;
+        }
+
+        .price .size {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .btn-card {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--beige-light);
+            color: var(--text-mocha);
+            border: 1px solid var(--taupe-accent);
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-card:hover {
+            background-color: var(--text-mocha);
+            color: var(--bg-cream);
+            border-color: var(--text-mocha);
+        }
+
+        .about-section {
+            background-color: var(--beige-light);
+            padding: 4rem 8%;
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 1px solid var(--beige-medium);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        footer {
+            background-color: var(--text-mocha);
+            color: var(--bg-cream);
+            padding: 4rem 8% 1.5rem 8%;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            color: var(--bg-cream);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-col h4 {
+            color: var(--taupe-accent);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col p {
+            color: var(--beige-medium);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .social-links a {
+            color: var(--beige-medium);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(229, 217, 197, 0.2);
+            font-size: 0.85rem;
+            color: var(--taupe-accent);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar-header">
+        <div class="logo">
+            <a href="#home">Symmetry Lab <span>Parfums</span></a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Collection</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Smell Luxurious Without Breaking the Bank</h2>
+                <p>Discover high-quality, long-lasting perfume dupes inspired by world-class fragrance houses, handcrafted for Filipinos.</p>
+                <a href="#products" class="btn-primary">Explore Dupes</a>
+            </div>
+        </section>
+
+        <section id="products" class="products-section">
+            <div class="section-title">
+                <h2>Our Best-Selling Dupes</h2>
+                <p>Enjoy luxury scents at a fraction of designer prices.</p>
+            </div>
+
+            <div class="product-grid">
+                
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="ECSTATIC-ROUGE-SET-1_1ad2be50-4afd-4511-b4a9-714e05e4c865.webp" alt="Ecstatic Rouge Perfume Dupe">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ecstatic Rouge</h3>
+                        <p class="dupe-note">Inspired by Baccarat Rouge 540</p>
+                        <p class="description">A rich blend of jasmine, saffron, cedarwood, and warm amber resin for an airy yet luxurious aura.</p>
+                        <p class="price">₱499.00 <span class="size">/ 90ml</span></p>
+                        <button class="btn-card">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="VANILLA-ASH-SET-1.webp" alt="Vanilla Ash Perfume Dupe">
+                    </div>
+                    <div class="product-info">
+                        <h3>Vanilla Ash</h3>
+                        <p class="dupe-note">Inspired by Byredo Gypsy Water</p>
+                        <p class="description">Fresh woody tones balanced with sweet vanilla, lemon zest, and smoky incense accents.</p>
+                        <p class="price">₱450.00 <span class="size">/ 90ml</span></p>
+                        <button class="btn-card">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="PISTACHIELLA-SET-1.webp" alt="Pistachiella Perfume Dupe">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pistachiella</h3>
+                        <p class="dupe-note">Inspired by Kayali Yum Pistachio Gelato</p>
+                        <p class="description">A mouth-watering gourmand scent filled with pistachio, sweet marshmallow, whipped cream, and hazelnut.</p>
+                        <p class="price">₱480.00 <span class="size">/ 90ml</span></p>
+                        <button class="btn-card">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="AQUA-ESSENCE-SET-1_846e7732-5e5b-4256-86a5-035a21f3e0b2.webp" alt="Aqua Essence Perfume Dupe">
+                    </div>
+                    <div class="product-info">
+                        <h3>Aqua Essence</h3>
+                        <p class="dupe-note">Inspired by MFK Aqua Universalis</p>
+                        <p class="description">Crisp bergamot, lemon, white flowers, and light musk create the ultimate fresh-out-of-the-shower scent.</p>
+                        <p class="price">₱420.00 <span class="size">/ 90ml</span></p>
+                        <button class="btn-card">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="ph-11134207-7ra0i-mbdedi111yh4f8.jfif" alt="Magisterium Perfume Dupe">
+                    </div>
+                    <div class="product-info">
+                        <h3>Magisterium</h3>
+                        <p class="dupe-note">Inspired by Creed Aventus</p>
+                        <p class="description">A bold, sophisticated mix of blackcurrant, Italian bergamot, French apples, and smoky birch.</p>
+                        <p class="price">₱520.00 <span class="size">/ 90ml</span></p>
+                        <button class="btn-card">Buy Now</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="about-content">
+                <h2>Crafted in the Philippines</h2>
+                <p>At <strong>Symmetry Lab Parfums</strong>, we believe everyone deserves to smell like royalty without spending a fortune. Our fragrances are crafted with premium imported fragrance oils mixed locally to suit the tropical Philippine climate—offering high oil concentrations and long-lasting performance.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Symmetry Lab Parfums</h3>
+                <p>Affordable luxury inspired by signature global perfumes.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>📍 Manila, Philippines</p>
+                <p>✉️ hello@symmetrylab.ph</p>
+                <p>📞 +63 (917) 123-4567</p>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank">Facebook</a>
+                    <a href="https://instagram.com" target="_blank">Instagram</a>
+                    <a href="https://tiktok.com" target="_blank">TikTok</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Symmetry Lab Parfums. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
